@@ -8,6 +8,11 @@ public class Player : MonoBehaviour
     // Configuration Parameters
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float padding = 1f;
+    [SerializeField] GameObject laserPrefab;
+    [SerializeField] float projectileSpeed = 10f;
+    [SerializeField] float projectileFiringPeriod = 0.1f;
+
+    private Coroutine firingCoroutine;
 
     private float xMin, xMax;
     private float yMin, yMax;
@@ -33,6 +38,31 @@ public class Player : MonoBehaviour
     void Update()
     {
         Move();
+        Fire();
+    }
+
+    // Method for firing laser
+    private void Fire()
+    {
+        if(Input.GetButtonDown("Fire1"))
+        {
+            firingCoroutine = StartCoroutine(FireContinuously());
+        }
+        if(Input.GetButtonUp("Fire1"))
+        {
+            StopCoroutine(firingCoroutine);
+        }
+    }
+
+    // Coroutine for firing laser continuously
+    IEnumerator FireContinuously()
+    {
+        while(true)
+        {
+            GameObject laser = Instantiate(laserPrefab, transform.position, Quaternion.identity) as GameObject;
+            laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
+            yield return new WaitForSeconds(projectileFiringPeriod);
+        }
     }
 
     // Method for making the player move using the keyboard
