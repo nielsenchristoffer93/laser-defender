@@ -6,12 +6,19 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     // Configuration Parameters
+    [Header("Enemy")]
     [SerializeField] float health = 100;
+
+    [Header("Projectile")]
     [SerializeField] float shotCounter;
     [SerializeField] float minTimeBetweenShots = 0.2f;
     [SerializeField] float maxTimeBetweenShots = 3f;
     [SerializeField] GameObject projectile;
     [SerializeField] float projectileSpeed = 10f;
+
+    [Header("Settings")]
+    [SerializeField] GameObject explosionVFXPrefab;
+    [SerializeField] float durationOfExplosion = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -54,7 +61,13 @@ public class Enemy : MonoBehaviour
         damageDealer.Hit();
         if (health <= 0)
         {
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    private void Die()
+    {
+        Destroy(Instantiate(explosionVFXPrefab, transform.position, Quaternion.identity), durationOfExplosion);
+        Destroy(gameObject);
     }
 }

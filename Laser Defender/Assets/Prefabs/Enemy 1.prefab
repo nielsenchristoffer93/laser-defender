@@ -115,6 +115,8 @@ MonoBehaviour:
   projectile: {fileID: 326464980575086657, guid: 3547d8e75798d8440a57e3e28328d60c,
     type: 3}
   projectileSpeed: 10
+  explosionVFXPrefab: {fileID: 2613906514950758066, guid: 8e02f87356679034fbec53a00f452389,
+    type: 3}
 --- !u!60 &7020861897811715610
 PolygonCollider2D:
   m_ObjectHideFlags: 0

@@ -73,8 +73,8 @@
     <Compile Include="Assets\Scripts\WaveConfig.cs" />
   </ItemGroup>
   <ItemGroup>
-     <None Include="Assets\ZSpace Shooter Visual Assets\Spritesheet\sheet.xml" />
-     <None Include="Assets\ZSpace Shooter Visual Assets\license.txt" />
+     <None Include="Assets\Z_Space Shooter Visual Assets\Spritesheet\sheet.xml" />
+     <None Include="Assets\Z_Space Shooter Visual Assets\license.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
     </Reference>
