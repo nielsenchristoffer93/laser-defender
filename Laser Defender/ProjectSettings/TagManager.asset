@@ -41,3 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Projectiles
+    uniqueID: 861662595
+    locked: 0
+  - name: Space Ships
+    uniqueID: 3983481253
+    locked: 0

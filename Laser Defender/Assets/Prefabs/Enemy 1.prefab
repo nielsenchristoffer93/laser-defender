@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 2260752008014970204}
   - component: {fileID: 6353143928577633295}
   - component: {fileID: 7020861897811715610}
+  - component: {fileID: -8307843443800274155}
+  - component: {fileID: 263739946743550845}
   m_Layer: 9
   m_Name: Enemy 1
   m_TagString: Untagged
@@ -70,8 +72,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -311486043
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 998ca1ad22a0ab64abab84824ce24586, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -109,6 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  pointsWorth: 100
   shotCounter: 0
   minTimeBetweenShots: 0.2
   maxTimeBetweenShots: 3
@@ -117,6 +120,11 @@ MonoBehaviour:
   projectileSpeed: 10
   explosionVFXPrefab: {fileID: 2613906514950758066, guid: 8e02f87356679034fbec53a00f452389,
     type: 3}
+  durationOfExplosion: 1
+  deathSFX: {fileID: 8300000, guid: 286885c651742f548a5733b990017a99, type: 3}
+  deathSoundVolume: 0.7
+  shootSound: {fileID: 8300000, guid: b59878e8755417b4cabea585d6f77f50, type: 3}
+  shootSoundVolume: 0.25
 --- !u!60 &7020861897811715610
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -127,7 +135,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -164,3 +172,37 @@ PolygonCollider2D:
       - {x: 0.17221437, y: -0.32525015}
       - {x: 0.2786072, y: -0.32721424}
       - {x: 0.27942872, y: -0.31278563}
+--- !u!50 &-8307843443800274155
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660568487019873856}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &263739946743550845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660568487019873856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 023ce8d338bdb96419f075c54dc5a1f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 200

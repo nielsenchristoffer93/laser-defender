@@ -69,8 +69,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -311486043
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 52d0fdef1b9a5dd4f9135dc5def66948, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -97,11 +97,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   padding: 1
-  health: 200
+  health: 1000
   laserPrefab: {fileID: 3571290859542944078, guid: 23a7013a382bc0241bd912c7f82762b8,
     type: 3}
   projectileSpeed: 20
   projectileFiringPeriod: 0.1
+  explosionVFXPrefab: {fileID: 2613906514950758066, guid: 8e02f87356679034fbec53a00f452389,
+    type: 3}
+  durationOfExplosion: 1
+  deathSFX: {fileID: 8300000, guid: 9ee667734fce41d4e915cd4786e6fe83, type: 3}
+  deathSoundVolume: 0.75
+  disablePlayerShootSound: 0
+  shootSound: {fileID: 8300000, guid: 4fad1daad3d32e94a8fd998651e26631, type: 3}
+  shootSoundVolume: 0.1
 --- !u!60 &6821160969301179332
 PolygonCollider2D:
   m_ObjectHideFlags: 0

@@ -16,6 +16,17 @@ public class Player : MonoBehaviour
     [SerializeField] float projectileSpeed = 10f;
     [SerializeField] float projectileFiringPeriod = 0.1f;
 
+    [Header("Explosion Settings")]
+    [SerializeField] GameObject explosionVFXPrefab;
+    [SerializeField] float durationOfExplosion = 1f;
+
+    [Header("Sound Settings")]
+    [SerializeField] AudioClip deathSFX;
+    [Range(0, 1)] [SerializeField] float deathSoundVolume = 0.75f;
+    [SerializeField] bool disablePlayerShootSound = false;
+    [SerializeField] AudioClip shootSound;
+    [Range(0, 1)] [SerializeField] float shootSoundVolume = 0.25f;
+
     private Coroutine firingCoroutine;
 
     private float xMin, xMax;
@@ -58,8 +69,16 @@ public class Player : MonoBehaviour
         damageDealer.Hit();
         if (health <= 0)
         {
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    private void Die()
+    {
+        Destroy(Instantiate(explosionVFXPrefab, transform.position, Quaternion.identity), durationOfExplosion);
+        FindObjectOfType<Level>().LoadGameOver();
+        Destroy(gameObject);
+        AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathSoundVolume);
     }
 
     // Method for firing laser
@@ -82,6 +101,10 @@ public class Player : MonoBehaviour
         {
             GameObject laser = Instantiate(laserPrefab, transform.position, Quaternion.identity) as GameObject;
             laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
+            if (!disablePlayerShootSound)
+            {
+                AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position, shootSoundVolume);
+            }
             yield return new WaitForSeconds(projectileFiringPeriod);
         }
     }
@@ -96,5 +119,10 @@ public class Player : MonoBehaviour
         var newYPos = Mathf.Clamp(transform.position.y + deltaY, yMin, yMax);
 
         transform.position = new Vector2(newXPos, newYPos);
+    }
+
+    public int GetHealth()
+    {
+        return health;
     }
 }
